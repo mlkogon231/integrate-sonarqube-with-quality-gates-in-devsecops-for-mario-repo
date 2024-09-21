@@ -1,9 +1,9 @@
-name: Build
+name: Dockerize the application
 
-on:
-  push:
-    branches:
-      - main
+#  on:
+#   push:
+#     branches:
+#       - main
 
 
 jobs:
@@ -24,6 +24,7 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       # If you wish to fail your job when the Quality Gate is red, uncomment the
       # following lines. This would typically be used to fail a deployment.
+# Use an official Tomcat image as a base image
       - name: SonarQube Quality Gate Check
         uses: sonarsource/sonarqube-quality-gate-action@master
         timeout-minutes: 5

@@ -1,0 +1,23 @@
+name: "Build and push Super Mario Docker image with static tag to Docker Hub"
+ 
+on:
+  push:
+    branches:
+      - main
+  
+jobs:
+  
+  build_push_supermario_docker_image:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+  
+      - name: Login to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+ 
+      - name: Build and Push Docker Image
+        run: |
+          docker build -t docker.io/mkogon231/portfolio2024-supermario-docker-project:1 .
+          docker push docker.io/mkogon231/portfolio2024-supermario-docker-project:1
