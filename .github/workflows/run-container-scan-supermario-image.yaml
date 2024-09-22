@@ -28,7 +28,7 @@ jobs:
       - name: Run Trivy vulnerability scanner in tarball mode
         uses: aquasecurity/trivy-action@master
         with:
-          input: /c/portfolio/devsecops/integrate-sonarqube-with-quality-gates-in-devsecops-for-mario-repo/portfolio2024supermariodockerproject.tar
-#          input: /github/workspace/portfolio2024supermariodockerproject.tar
+#          input: /c/portfolio/devsecops/integrate-sonarqube-with-quality-gates-in-devsecops-for-mario-repo/portfolio2024supermariodockerproject.tar
+          input: /github/workspace/portfolio2024supermariodockerproject.tar
           exit-code: '1'
           severity: 'CRITICAL,HIGH'
