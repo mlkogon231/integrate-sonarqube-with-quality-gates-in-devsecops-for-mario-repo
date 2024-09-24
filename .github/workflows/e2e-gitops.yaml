@@ -1,9 +1,10 @@
-name: "Run SAST, Build and push supermario image, scan image, Update deployment and version files"
+name: "Run SAST, Build and push supermario image, scan image, Update deployment and version txt files"
  
 on:
   push:
     branches:
-    - main
+      - main
+ 
 env:
   VERSION: $(( $(cat version.txt) + 1 ))
   
@@ -40,7 +41,7 @@ jobs:
         uses: actions/checkout@v3
   
       - name: Login to Docker Hub
-      run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
  
       - name: Build and Push Docker Image
         run: |
@@ -91,4 +92,4 @@ jobs:
           CURRENT_VERSION=$(cat version.txt)
           git add deployment.yaml version.txt
           git commit -m "Updated deployment yaml and version txt file with supermario image tag to ${CURRENT_VERSION}"
-
+          git push
