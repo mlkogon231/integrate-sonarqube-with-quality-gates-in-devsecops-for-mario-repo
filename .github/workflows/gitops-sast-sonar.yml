@@ -5,6 +5,7 @@ name: Dockerize the application
 #     branches:
 #       - main
 
+
 jobs:
   build:
     name: Build and analyze
